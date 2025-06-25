@@ -1,0 +1,23 @@
+[metadata]
+source-url = "https://sourceware.org/pub/binutils/releases/binutils-2.44.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+mkdir ${WORKSPACE}/build || fail
+cd ${WORKSPACE}/build || fail
+../configure --prefix=$BSROOT/tools          \
+             --with-sysroot=$BSROOT          \
+             --target=$TARGET                \
+             --disable-nls                   \
+             --enable-gprofng=no             \
+             --disable-werror                \
+             --enable-new-dtags              \
+             --enable-default-hash-style=gnu || fail
+'''
+build = '''
+cd ${WORKSPACE}/build || fail
+make || fail
+'''
+install = '''
+'''
