@@ -1,0 +1,18 @@
+# Unlike the other tomls in here, this one describes how to bootstrap the system
+# It's used for vix bootstrap (duh), specifically so it knows the sequencial order
+# and what packages to make
+
+[packages]
+# Must strictly be in the correct order
+stage1 = [ 
+    "buildtools/binutils 2.44-bootstrap1",
+    "buildtools/gcc 14.2.0-bootstrap1"
+]
+# Must strictly be in the correct order
+stage2 = [
+
+]
+# Can be in any order (viverna/vix is always included)
+stage3 = [
+
+]
