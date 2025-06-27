@@ -6,9 +6,9 @@ bootstrap-version = true
 configure = '''
 mkdir ${WORKSPACE}/binutils-2.44/build || fail
 cd ${WORKSPACE}/binutils-2.44/build || fail
-../configure --prefix=$INSTALL/usr           \
+../configure --prefix=$INSTALL               \
              --with-sysroot=$ROOT            \
-             --target=$TARGET                \
+             --target=$CROSS_TARGET          \
              --disable-nls                   \
              --enable-gprofng=no             \
              --disable-werror                \
