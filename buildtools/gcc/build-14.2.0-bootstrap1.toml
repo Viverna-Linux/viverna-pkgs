@@ -1,3 +1,58 @@
 [metadata]
-bootstrap_version = true
+source-url = "https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
+bootstrap-version = true
 
+[build]
+configure='''
+wget https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz || fail
+wget https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz || fail
+wget https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.1.tar.xz || fail
+cd ${WORKSPACE}/gcc-14.2.0 || fail
+tar -xf ../mpfr-4.2.1.tar.xz || fail
+mv -v mpfr-4.2.1 mpfr || fail
+tar -xf ../gmp-6.3.0.tar.xz || fail
+mv -v gmp-6.3.0 gmp || fail
+tar -xf ../mpc-1.3.1.tar.gz || fail
+mv -v mpc-1.3.1 mpc || fail
+
+case $(uname -m) in
+    x86_64)
+        sed -e '/m64=/s/lib64/lib/' \
+        -i.orig gcc/config/i386/t-linux64
+    ;;
+esac
+
+sed '/thread_header =/s/@.*@/gthr-posix.h/' \
+-i libgcc/Makefile.in libstdc++-v3/include/Makefile.in || fail
+
+mkdir -v build || fail
+cd build || fail
+../configure \
+--target=$TARGET \
+--prefix=$INSTALL/usr \
+--with-glibc-version=2.41 \
+--with-sysroot=$ROOT \
+--with-newlib \
+--without-headers \
+--enable-default-pie \
+--enable-default-ssp \
+--disable-nls \
+--disable-shared \
+--disable-multilib \
+--disable-threads \
+--disable-libatomic \
+--disable-libgomp \
+--disable-libquadmath \
+--disable-libssp \
+--disable-libvtv \
+--disable-libstdcxx \
+--enable-languages=c,c++ || fail
+'''
+build = '''
+cd ${WORKSPACE}/gcc-14.2.0/build || fail
+make || fail
+'''
+install = '''
+cd ${WORKSPACE}/gcc-14.2.0/build || fail
+make install || fail
+'''
