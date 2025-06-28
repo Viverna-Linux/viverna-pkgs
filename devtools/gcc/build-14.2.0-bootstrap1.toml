@@ -18,7 +18,7 @@ mkdir -v build || fail
 cd build || fail
 ../configure \
 --target=$CROSS_TARGET \
---prefix=$ROOT/tools \
+--prefix=/tools \
 --with-glibc-version=2.41 \
 --with-sysroot=$ROOT \
 --with-newlib \
@@ -44,7 +44,8 @@ make -j$(nproc) || fail
 install = '''
 cd ${WORKSPACE}/gcc-14.2.0/build || fail
 make DESTDIR=$INSTALL install || fail
-cd $INSTALL || fail
-mv ./tmp/stage1/tools tools || fail
-rm -r ./tmp
+
+cd .. || fail
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+$INSTALL/tools/lib/gcc/${CROSS_TARGET}/14.2.0/include/limits.h || fail
 '''

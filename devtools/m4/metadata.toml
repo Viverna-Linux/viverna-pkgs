@@ -1,0 +1,5 @@
+[package]
+name = "devtools/m4"
+description = "GNU macro processor"
+available-versions = ["1.4.19-bootstrap"]
+latest-version = "1.4.19"

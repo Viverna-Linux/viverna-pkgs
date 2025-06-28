@@ -1,0 +1,5 @@
+[package]
+name = "appcli/bash"
+description = "GNU Bourne again shell"
+available-versions = ["5.2.37-bootstrap"]
+latest-version = "5.2.37"

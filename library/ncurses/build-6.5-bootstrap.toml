@@ -1,0 +1,30 @@
+[metadata]
+source-url = "https://invisible-mirror.net/archives/ncurses/ncurses-6.5.tar.gz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd ncurses-6.5 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(./config.guess) \
+--mandir=/usr/share/man \
+--with-manpage-format=normal \
+--with-shared \
+--without-normal \
+--with-cxx-shared \
+--without-debug \
+--without-ada \
+--disable-stripping \
+AWK=gawk || fail
+'''
+build = '''
+cd ncurses-6.5 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+make DESTDIR=$INSTALL install || fail
+ln -sv libncursesw.so $INSTALL/usr/lib/libncurses.so || fail
+sed -e 's/^#if.*XOPEN.*$/#if 1/' \
+-i $INSTALL/usr/include/curses.h || fail
+'''

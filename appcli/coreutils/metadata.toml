@@ -1,0 +1,5 @@
+[package]
+name = "appcli/coreutils"
+description = "GNU Core Utilities"
+available-versions = ["9.6-bootstrap"]
+latest-version = "9.6"

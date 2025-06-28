@@ -1,0 +1,5 @@
+[package]
+name = "library/ncurses"
+description = "Console display library"
+available-versions = ["6.5-bootstrap"]
+latest-version = "6.5"

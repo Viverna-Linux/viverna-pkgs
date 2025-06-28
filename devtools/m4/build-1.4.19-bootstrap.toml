@@ -1,0 +1,19 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd m4-1.4.19 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(build-aux/config.guess) || fail
+'''
+build = '''
+cd m4-1.4.19 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd m4-1.4.19 || fail
+make DESTDIR=$INSTALL install || fail
+'''

@@ -1,0 +1,21 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/bash/bash-5.2.37.tar.gz"
+bootstrap-version = true
+
+[build]
+confiure = '''
+cd bash-5.2.37 || fail
+./configure --prefix=/usr \
+--build=$(sh support/config.guess) \
+--host=$CROSS_TARGET \
+--without-bash-malloc || fail
+'''
+build = '''
+cd bash-5.2.37 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd bash-5.2.37 || fail
+make DESTDIR=$INSTALL install || fail
+ln -sv bash $INSTALL/bin/sh
+'''

@@ -1,0 +1,24 @@
+[metadata]
+
+[build]
+configure = '''
+cd coreutils-9.6 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(build-aux/config.guess) \
+--enable-install-program=hostname \
+--enable-no-install-program=kill,uptime || fail
+'''
+build = '''
+cd coreutils-9.6 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd coreutils-9.6 || fail
+make DESTDIR=$INSTALL install || fail
+
+mv -v $INSTALL/usr/bin/chroot $INSTALL/usr/sbin || fail
+mkdir -pv $INSTALL/usr/share/man/man8 || fail
+mv -v $INSTALL/usr/share/man/man1/chroot.1 $INSTALL/usr/share/man/man8/chroot.8 || fail
+sed -i 's/"1"/"8"/' $INSTALL/usr/share/man/man8/chroot.8 || fail
+'''

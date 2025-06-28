@@ -4,7 +4,6 @@ bootstrap-version = true
 
 [build]
 configure='''
-PATH=$ROOT/tools/bin:$PATH
 cd glibc-2.41 || fail
 case $(uname -m) in
     i?86)
@@ -29,12 +28,10 @@ echo "rootsbindir=/usr/sbin" > configparms
 libc_cv_slibdir=/usr/lib
 '''
 build='''
-PATH=$ROOT/tools/bin:$PATH
 cd glibc-2.41/build || fail
 make -j$(nproc) || fail
 '''
 install='''
-PATH=$ROOT/tools/bin:$PATH
 cd glibc-2.41/build || fail
 make DESTDIR=$INSTALL install || fail
 sed '/RTLDLIST=/s@/usr@@g' -i $INSTALL/usr/bin/ldd
