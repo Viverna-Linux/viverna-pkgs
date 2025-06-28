@@ -5,14 +5,9 @@ bootstrap-version = true
 [build]
 configure='''
 cd glibc-2.41 || fail
-case $(uname -m) in
-    i?86)
-        ln -sfv ld-linux.so.2 $ROOT/lib/ld-lsb.so.3
-    ;;
-    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $ROOT/lib64
-        ln -sfv ../lib/ld-linux-x86-64.so.2 $ROOT/lib64/ld-lsb-x86-64.so.3
-    ;;
-esac
+ln -s -T usr/bin $ROOT/bin
+ln -s -T usr/lib $ROOT/lib
+ln -s -T usr/lib $ROOT/lib64
 
 mkdir -v build || fail
 cd build || fail
