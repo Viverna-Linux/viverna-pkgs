@@ -1,0 +1,21 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/gawk/gawk-5.3.1.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd gawk-5.3.1 || fail
+sed -i 's/extras//' Makefile.in || fail
+
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(build-aux/config.guess) || fail
+'''
+build = '''
+cd gawk-5.3.1 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd gawk-5.3.1 || fail
+make DESTDIR=$INSTALL install
+'''

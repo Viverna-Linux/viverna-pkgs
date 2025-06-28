@@ -1,0 +1,19 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/sed/sed-4.9.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd sed-4.9 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(./build-aux/config.guess) || fail
+'''
+build = '''
+cd sed-4.9 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd sed-4.9 || fail
+make DESTDIR=$INSTALL install || fail
+'''

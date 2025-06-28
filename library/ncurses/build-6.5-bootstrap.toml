@@ -23,6 +23,7 @@ cd ncurses-6.5 || fail
 make -j$(nproc) || fail
 '''
 install = '''
+cd ncurses-6.5 || fail
 make DESTDIR=$INSTALL install || fail
 ln -sv libncursesw.so $INSTALL/usr/lib/libncurses.so || fail
 sed -e 's/^#if.*XOPEN.*$/#if 1/' \

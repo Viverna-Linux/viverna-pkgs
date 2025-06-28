@@ -1,0 +1,22 @@
+[metadata]
+source-url = "https://github.com//tukaani-project/xz/releases/download/v5.6.4/xz-5.6.4.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd xz-5.6.4 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(build-aux/config.guess) \
+--disable-static \
+--docdir=/usr/share/doc/xz-5.6.4 || fail
+'''
+build = '''
+cd xz-5.6.4 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd xz-5.6.4 || fail
+make DESTDIR=$INSTALL install || fail
+rm -v $INSTALL/usr/lib/liblzma.la
+'''

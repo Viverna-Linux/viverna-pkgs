@@ -1,0 +1,20 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/make/make-4.4.1.tar.gz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd make-4.4.1 || fail
+./configure --prefix=/usr \
+--without-guile \
+--host=$CROSS_TARGET \
+--build=$(build-aux/config.guess) || fail
+'''
+build = '''
+cd make-4.4.1 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd make-4.4.1 || fail
+make DESTDIR=$INSTALL install || fail
+'''

@@ -3,7 +3,7 @@ source-url = "https://ftp.gnu.org/gnu/bash/bash-5.2.37.tar.gz"
 bootstrap-version = true
 
 [build]
-confiure = '''
+configure = '''
 cd bash-5.2.37 || fail
 ./configure --prefix=/usr \
 --build=$(sh support/config.guess) \
@@ -17,5 +17,5 @@ make -j$(nproc) || fail
 install = '''
 cd bash-5.2.37 || fail
 make DESTDIR=$INSTALL install || fail
-ln -sv bash $INSTALL/bin/sh
+ln -sv bash $INSTALL/usr/bin/sh
 '''

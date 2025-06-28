@@ -1,0 +1,19 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/tar/tar-1.35.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd tar-1.35 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(./build-aux/config.guess) || fail
+'''
+build = '''
+cd tar-1.35 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd tar-1.35 || fail
+make DESTDIR=$INSTALL install || fail
+'''

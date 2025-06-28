@@ -8,13 +8,24 @@ stage1-2 = [
     "devtools/binutils 2.44-bootstrap1",
     "devtools/gcc 14.2.0-bootstrap1",
     "system/linux-headers 6.13.4",
-    "library/glibc 2.41-bootstrap1",
+    "library/glibc 2.41-bootstrap",
     "library/libstdc++ 14.2.0-bootstrap",
     # Stage 2
     "devtools/m4 1.4.19-bootstrap",
     "library/ncurses 6.5-bootstrap",
     "appcli/bash 5.2.37-bootstrap",
-    "appcli/coreutils 9.6-bootstrap"
+    "appcli/coreutils 9.6-bootstrap",
+    "appcli/file 5.46-bootstrap",
+    "appcli/findutils 4.10.0-bootstrap",
+    "appcli/gawk 5.3.1-bootstrap",
+    "appcli/grep 3.11-bootstrap",
+    "devtools/make 4.4.1-bootstrap",
+    "devtools/patch 2.7.6-bootstrap",
+    "appcli/sed 4.9-bootstrap",
+    "appcli/tar 1.35-bootstrap",
+    "appcli/xz 5.6.4-bootstrap",
+    "devtools/binutils 2.44-bootstrap2",
+    "devtools/gcc 14.2.0-bootstrap2"
 ]
 # Can be in any order (viverna/vix is always included)
 stage3 = [

@@ -1,0 +1,5 @@
+[package]
+name = "appcli/sed"
+description = "GNU Stream Editor"
+available-versions = ["4.9-bootstrap"]
+latest-version = "4.9"

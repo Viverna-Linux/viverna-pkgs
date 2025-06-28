@@ -1,0 +1,5 @@
+[package]
+name = "appcli/tar"
+description = "GNU TAR, used to create tarballs"
+available-versions = ["1.35-bootstrap"]
+latest-version = "1.35"

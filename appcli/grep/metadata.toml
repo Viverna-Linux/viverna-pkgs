@@ -1,0 +1,5 @@
+[package]
+name = "appcli/grep"
+description = "GNU regular expression matcher"
+available-versions = ["3.11-bootstrap"]
+latest-version = "3.11"

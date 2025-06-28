@@ -1,0 +1,5 @@
+[package]
+name = "devtools/make"
+description = "Standard tool to compile source trees"
+available-versions = ["4.4.1-bootstrap"]
+latest-version = "4.4.1"

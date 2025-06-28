@@ -1,4 +1,6 @@
 [metadata]
+source-url = "https://ftp.gnu.org/gnu/coreutils/coreutils-9.6.tar.xz"
+bootstrap-version = true
 
 [build]
 configure = '''

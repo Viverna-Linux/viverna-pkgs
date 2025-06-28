@@ -1,0 +1,5 @@
+[package]
+name = "appcli/findutils"
+description = "GNU utilities for finding files"
+available-versions = ["4.10.0-bootstrap"]
+latest-version = "4.10.0"

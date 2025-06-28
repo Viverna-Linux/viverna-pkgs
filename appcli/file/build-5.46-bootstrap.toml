@@ -1,0 +1,26 @@
+[metadata]
+source-url = "https://astron.com/pub/file/file-5.46.tar.gz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd file-5.46 || fail
+mkdir build || fail
+pushd build
+    ../configure --disable-bzlib \
+    --disable-libseccomp \
+    --disable-xzlib \
+    --disable-zlib
+    make
+popd
+./configure --prefix=/usr --host=$CROSS_TARGET --build=$(./config.guess) || fail
+'''
+build = '''
+cd file-5.46 || fail
+make FILE_COMPILE=$(pwd)/build/src/file
+'''
+install = '''
+cd file-5.46 || fail
+make DESTDIR=$INSTALL install || fail
+rm -v $INSTALL/usr/lib/libmagic.la || fail
+'''

@@ -1,5 +1,5 @@
 [package]
-name = "buildtools/gcc"
+name = "devtools/gcc"
 description = "GNU Compiler Collection, Provides a C and C++ compiler"
-available-versions = ["14.2.0", "14.2.0-bootstrap1"]
+available-versions = ["14.2.0", "14.2.0-bootstrap2", "14.2.0-bootstrap1"]
 latest-version = "14.2.0"

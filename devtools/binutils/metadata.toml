@@ -1,5 +1,5 @@
 [package]
-name = "buildtools/binutils"
+name = "devtools/binutils"
 description = "GNU Binutils, contains tools needed to build software"
-available-versions = ["2.44", "2.44-bootstrap1"]
+available-versions = ["2.44", "2.44-bootstrap2", "2.44-bootstrap1"]
 latest-version = "2.44"

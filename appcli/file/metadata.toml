@@ -1,0 +1,5 @@
+[package]
+name = "appcli/file"
+description = "Identify a file's format by scanning binary data for patterns"
+available-versions = ["5.46-bootstrap"]
+latest-version = "5.46"

@@ -1,0 +1,5 @@
+[package]
+name = "devtools/patch"
+description = "Utility to apply diffs to files"
+available-versions = ["2.7.6-bootstrap"]
+latest-version = "2.7.6"

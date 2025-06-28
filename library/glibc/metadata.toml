@@ -1,5 +1,5 @@
 [package]
 name = "library/glibc"
 description = "GNU C Standard Library"
-available-versions = ["2.41-bootstrap1"]
+available-versions = ["2.41-bootstrap"]
 latest-version = "2.41"

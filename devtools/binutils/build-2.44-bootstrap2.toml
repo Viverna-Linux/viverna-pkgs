@@ -1,0 +1,31 @@
+[metadata]
+source-url = "https://sourceware.org/pub/binutils/releases/binutils-2.44.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd binutils-2.44 || fail
+sed '6031s/$add_dir//' -i ltmain.sh || fail
+mkdir build || fail
+cd build || fail
+../configure \
+--prefix=/usr \
+--build=$(../config.guess) \
+--host=$CROSS_TARGET \
+--disable-nls \
+--enable-shared \
+--enable-gprofng=no \
+--disable-werror \
+--enable-64-bit-bfd \
+--enable-new-dtags \
+--enable-default-hash-style=gnu || fail
+'''
+build = '''
+cd ${WORKSPACE}/binutils-2.44/build || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd ${WORKSPACE}/binutils-2.44/build || fail
+make DESTDIR=$INSTALL install || fail
+rm -v $INSTALL/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la} || fail
+'''

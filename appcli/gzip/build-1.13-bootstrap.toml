@@ -1,0 +1,17 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/gzip/gzip-1.13.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd gzip-1.13 || fail
+./configure --prefix=/usr --host=$CROSS_TARGET || fail
+'''
+build = '''
+cd gzip-1.13 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd gzip-1.13 || fail
+make DESTDIR=$INSTALL install || fail
+'''

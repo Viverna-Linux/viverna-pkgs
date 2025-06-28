@@ -1,0 +1,19 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/diffutils/diffutils-3.11.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd diffutils-3.11 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(./build-aux/config.guess) || fail
+'''
+build = '''
+cd diffutils-3.11 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd diffutils-3.11 || fail
+make DESTDIR=$INSTALL install || fail
+'''

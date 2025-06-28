@@ -1,0 +1,5 @@
+[package]
+name = "appcli/gzip"
+description = "Standard GNU compressor"
+available-versions = ["1.13-bootstrap"]
+latest-version = "1.13"
