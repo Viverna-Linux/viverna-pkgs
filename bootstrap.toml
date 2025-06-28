@@ -6,7 +6,10 @@
 # Must strictly be in the correct order
 stage1 = [ 
     "buildtools/binutils 2.44-bootstrap1",
-    "buildtools/gcc 14.2.0-bootstrap1"
+    "buildtools/gcc 14.2.0-bootstrap1",
+    "system/linux-headers 6.13.4",
+    "library/glibc 2.41-bootstrap1",
+    "library/libstdc++ 14.2.0-bootstrap"
 ]
 # Must strictly be in the correct order
 stage2 = [

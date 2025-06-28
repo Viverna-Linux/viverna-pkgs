@@ -1,0 +1,15 @@
+[metadata]
+source-url = "https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.13.4.tar.xz"
+
+[build]
+build = '''
+cd linux-6.13.4 || fail
+make mrproper || fail
+make headers || fail
+'''
+install = '''
+cd linux-6.13.4 || fail
+find usr/include -type f ! -name '*.h' -delete || fail
+mkdir --parents $INSTALL/usr/
+cp -rvT usr/include $INSTALL/usr/include || fail
+'''

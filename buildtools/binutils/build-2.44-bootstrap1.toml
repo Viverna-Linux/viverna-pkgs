@@ -6,7 +6,7 @@ bootstrap-version = true
 configure = '''
 mkdir ${WORKSPACE}/binutils-2.44/build || fail
 cd ${WORKSPACE}/binutils-2.44/build || fail
-../configure --prefix=$INSTALL               \
+../configure --prefix=$INSTALL/tools         \
              --with-sysroot=$ROOT            \
              --target=$CROSS_TARGET          \
              --disable-nls                   \
@@ -17,7 +17,7 @@ cd ${WORKSPACE}/binutils-2.44/build || fail
 '''
 build = '''
 cd ${WORKSPACE}/binutils-2.44/build || fail
-make || fail
+make -j$(nproc) || fail
 '''
 install = '''
 cd ${WORKSPACE}/binutils-2.44/build || fail

@@ -1,0 +1,41 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/glibc/glibc-2.41.tar.xz"
+bootstrap-version = true
+
+[build]
+configure='''
+PATH=$ROOT/tools/bin:$PATH
+cd glibc-2.41 || fail
+case $(uname -m) in
+    i?86)
+        ln -sfv ld-linux.so.2 $ROOT/lib/ld-lsb.so.3
+    ;;
+    x86_64) ln -sfv ../lib/ld-linux-x86-64.so.2 $ROOT/lib64
+        ln -sfv ../lib/ld-linux-x86-64.so.2 $ROOT/lib64/ld-lsb-x86-64.so.3
+    ;;
+esac
+
+mkdir -v build || fail
+cd build || fail
+echo "rootsbindir=/usr/sbin" > configparms
+
+../configure \
+--prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(../scripts/config.guess) \
+--enable-kernel=5.4 \
+--with-headers=$ROOT/usr/include \
+--disable-nscd \
+libc_cv_slibdir=/usr/lib
+'''
+build='''
+PATH=$ROOT/tools/bin:$PATH
+cd glibc-2.41/build || fail
+make -j$(nproc) || fail
+'''
+install='''
+PATH=$ROOT/tools/bin:$PATH
+cd glibc-2.41/build || fail
+make DESTDIR=$INSTALL install || fail
+sed '/RTLDLIST=/s@/usr@@g' -i $INSTALL/usr/bin/ldd
+'''
