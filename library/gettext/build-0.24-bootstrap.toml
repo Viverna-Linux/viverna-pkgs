@@ -1,0 +1,20 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/gettext/gettext-0.24.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+cd gettext-0.24 || fail
+./configure --prefix=/usr \
+--host=$CROSS_TARGET \
+--build=$(build-aux/config.guess) || fail
+'''
+build = '''
+cd gettext-0.24 || fail
+make -j$(nproc) || fail
+'''
+install = '''
+cd gettext-0.24 || fail
+cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} $INSTALL/usr/bin || fail
+# make DESTDIR=$INSTALL install || fail
+'''
