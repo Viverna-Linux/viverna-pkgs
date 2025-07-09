@@ -4,20 +4,13 @@ bootstrap-version = true
 
 [build]
 configure = '''
-cd gettext-0.24 || fail
-./configure --prefix=/usr \
---host=$CROSS_TARGET \
---build=$(build-aux/config.guess) || fail
+sudo -B rm -rf $ROOT/work/* || fail
+mv -r gettext-0.24 $ROOT/work/ || fail
+sudo -B arch-chroot $ROOT bash -c "cd /work/gettext-0.24 && ./configure --disable-shared" || fail
 '''
 build = '''
-cd gettext-0.24 || fail
-make -j$(nproc) || fail
+sudo -B arch-chroot $ROOT bash -c "cd /work/gettext-0.24 && make -j$(nproc)" || fail
 '''
 install = '''
-cd gettext-0.24 || fail
-cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} $INSTALL/usr/bin || fail
-###### Initialize the chroot environment for us
-rm -r $ROOT/tools || fail
-mkdir $INSTALL/work || fail
-# make DESTDIR=$INSTALL install || fail
+sudo -B arch-chroot $ROOT bash -c "cd /work/gettext-0.24 && cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin" || fail
 '''
