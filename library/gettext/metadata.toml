@@ -1,0 +1,5 @@
+[package]
+name = "library/gettext"
+description = "GNU Gettext"
+available-versions = ["0.24-bootstrap"]
+latest-version = "0.24"

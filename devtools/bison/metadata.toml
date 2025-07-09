@@ -1,0 +1,5 @@
+[package]
+name = "devtools/bison"
+description = "GNU Bison"
+available-versions = ["3.8.2-bootstrap"]
+latest-version = "3.8.2"

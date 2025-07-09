@@ -16,5 +16,8 @@ make -j$(nproc) || fail
 install = '''
 cd gettext-0.24 || fail
 cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} $INSTALL/usr/bin || fail
+###### Initialize the chroot environment for us
+rm -r $ROOT/tools || fail
+mkdir $INSTALL/work || fail
 # make DESTDIR=$INSTALL install || fail
 '''
