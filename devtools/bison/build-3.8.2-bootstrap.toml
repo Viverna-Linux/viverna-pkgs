@@ -6,7 +6,7 @@ bootstrap-version = true
 configure = '''
 sudo -B rm -rf $ROOT/work/*
 mv bison-3.8.2 $ROOT/work/
-# sudo -B arch-chroot $ROOT bash -c "cd /work/bison-3.8.2 && ./configure --prefix=/usr --docdir=/usr/share/doc/bison-3.8.2" || fail
+sudo -B arch-chroot $ROOT bash -c "cd /work/bison-3.8.2 && ./configure --prefix=/usr --docdir=/usr/share/doc/bison-3.8.2" || fail
 '''
 build = '''
 sudo -B arch-chroot $ROOT bash -c "cd /work/bison-3.8.2 && make -j$(nproc)" || fail
