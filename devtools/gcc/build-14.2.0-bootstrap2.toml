@@ -47,6 +47,6 @@ cd gcc-14.2.0/build || fail
 make DESTDIR=$INSTALL install || fail
 ln -sv gcc $INSTALL/usr/bin/cc || fail
 ###### Initialize the chroot environment for us
-mkdir $INSTALL/work || fail
+mkdir $INSTALL/{dev,proc,work,sys,tmp,run} || fail
 rm -rv $ROOT/tools || fail
 '''

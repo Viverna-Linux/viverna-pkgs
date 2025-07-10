@@ -15,6 +15,7 @@ stage1-2 = [
     "library/ncurses 6.5-bootstrap",
     "appcli/bash 5.2.37-bootstrap",
     "appcli/coreutils 9.6-bootstrap",
+    "appcli/diffutils 3.11-bootstrap",
     "appcli/file 5.46-bootstrap",
     "appcli/findutils 4.10.0-bootstrap",
     "appcli/gawk 5.3.1-bootstrap",
