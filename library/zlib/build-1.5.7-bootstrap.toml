@@ -1,0 +1,16 @@
+[metadata]
+source-url = "https://zlib.net/fossils/zlib-1.3.1.tar.gz"
+bootstrap-version = true
+
+[build]
+configure = '''
+sudo -B rm -rf $ROOT/work/*
+mv zlib-1.3.1 $ROOT/work/
+sudo -B arch-chroot $ROOT bash -c "cd /work/zlib-1.3.1 && ./configure --prefix=/usr" || fail
+'''
+build = '''
+sudo -B arch-chroot $ROOT bash -c "cd /work/zlib-1.3.1 && make -j$(nproc) && make check" || fail
+'''
+install = '''
+sudo -B arch-chroot $ROOT bash -c "cd /work/zlib-1.3.1 && make install && rm -fv /usr/lib/libz.a" || fail
+'''

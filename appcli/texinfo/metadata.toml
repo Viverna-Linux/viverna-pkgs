@@ -1,0 +1,5 @@
+[package]
+name = "appcli/texinfo"
+description = "GNU info program and utilities"
+available-versions = ["7.2-bootstrap"]
+latest-version = "7.2"

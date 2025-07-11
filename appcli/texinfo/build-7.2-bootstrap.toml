@@ -1,0 +1,16 @@
+[metadata]
+source-url = "https://ftp.gnu.org/gnu/texinfo/texinfo-7.2.tar.xz"
+bootstrap-version = true
+
+[build]
+configure = '''
+sudo -B rm -rf $ROOT/work/*
+mv texinfo-7.2 $ROOT/work/
+sudo -B arch-chroot $ROOT bash -c "cd /work/texinfo-7.2 && ./configure --prefix=/usr" || fail
+'''
+build = '''
+sudo -B arch-chroot $ROOT bash -c "cd /work/texinfo-7.2 && make -j$(nproc)" || fail
+'''
+install = '''
+sudo -B arch-chroot $ROOT bash -c "cd /work/texinfo-7.2 && make install" || fail
+'''

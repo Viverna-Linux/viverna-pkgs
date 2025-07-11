@@ -1,0 +1,5 @@
+[package]
+name = "appcli/util-linux"
+description = "Various useful Linux utilities"
+available-versions = ["2.40.4-bootstrap"]
+latest-version = "2.40.4"

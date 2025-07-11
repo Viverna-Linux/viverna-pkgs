@@ -1,0 +1,5 @@
+[package]
+name = "appcli/nano"
+description = "GNU Nano Text Editor"
+available-versions = ["8.3-bootstrap"]
+latest-version = "8.3"

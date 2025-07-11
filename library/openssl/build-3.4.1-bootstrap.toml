@@ -1,0 +1,16 @@
+[metadata]
+source-url = "https://github.com/openssl/openssl/releases/download/openssl-3.4.1/openssl-3.4.1.tar.gz"
+bootstrap-version = true
+
+[build]
+configure = '''
+sudo -B rm -rf $ROOT/work/*
+mv openssl-3.4.1 $ROOT/work/
+sudo -B arch-chroot $ROOT bash -c "cd /work/openssl-3.4.1 && ./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib shared zlib-dynamic" || fail
+'''
+build = '''
+sudo -B arch-chroot $ROOT bash -c "cd /work/openssl-3.4.1 && make -j$(nproc)" || fail
+'''
+install = '''
+sudo -B arch-chroot $ROOT bash -c "cd /work/openssl-3.4.1 && sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile && make MANSUFFIX=ssl install" || fail
+'''

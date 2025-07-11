@@ -1,0 +1,5 @@
+[package]
+name = "devtools/perl"
+description = "(Not >:3) Practical Extraction and Report Language"
+available-versions = ["5.40.1-bootstrap"]
+latest-version = "5.40.1"

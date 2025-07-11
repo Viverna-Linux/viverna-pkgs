@@ -1,0 +1,5 @@
+[package]
+name = "devtools/python"
+description = "Python Programming Language"
+available-versions = ["3.13.5-bootstrap"]
+latest-version = "3.13.5"

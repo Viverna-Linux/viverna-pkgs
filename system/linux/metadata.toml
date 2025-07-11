@@ -1,5 +1,5 @@
 [package]
 name = "system/linux"
 description = "Linux Kernel"
-available-versions = ["6.13.4-bootstrap1"]
+available-versions = ["6.13.4"]
 latest-version = "6.13.4"

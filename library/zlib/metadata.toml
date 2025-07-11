@@ -1,0 +1,5 @@
+[package]
+name = "library/zlib"
+description = "Standard (de)compression library"
+available-versions = ["1.5.7-bootstrap"]
+latest-version = "1.5.7"

@@ -1,0 +1,5 @@
+[package]
+name = "library/openssl"
+description = "OpenSSL Library"
+available-versions = ["3.4.1-bootstrap"]
+latest-version = "3.4.1"
