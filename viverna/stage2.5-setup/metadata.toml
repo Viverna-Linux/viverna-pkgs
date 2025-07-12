@@ -1,0 +1,5 @@
+[package]
+name = "viverna/stage2.5-setup"
+description = "Sets up basic files and FHS directories for Viverna"
+available-versions = ["0.1.0"]
+latest-version = "0.1.0"
