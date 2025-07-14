@@ -1,6 +1,7 @@
 [metadata]
 source-url = "https://sourceware.org/pub/binutils/releases/binutils-2.44.tar.xz"
 bootstrap-version = true
+bootstrap-oneshot = true
 
 [build]
 configure = '''

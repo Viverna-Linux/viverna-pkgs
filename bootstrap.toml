@@ -39,5 +39,6 @@ stage1-2 = [
     "library/openssl 3.4.1-bootstrap",
     "devtools/python 3.13.5-bootstrap",
     "appcli/texinfo 7.2-bootstrap",
-    "appcli/util-linux 2.40.4-bootstrap"
+    "appcli/util-linux 2.40.4-bootstrap",
+    "misc/ca-certificates 2025.05.20"
 ]

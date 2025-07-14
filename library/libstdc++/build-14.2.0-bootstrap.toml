@@ -1,6 +1,7 @@
 [metadata]
 source-url = "https://ftp.gnu.org/gnu/gcc/gcc-14.2.0/gcc-14.2.0.tar.xz"
 bootstrap-version = true
+bootstrap-oneshot = true
 
 [build]
 configure = '''

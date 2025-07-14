@@ -1,0 +1,5 @@
+[package]
+name = "misc/ca-certificates"
+description = "Common CA Certificates PEM files"
+available-versions = ["2025.05.20"]
+latest-version = "2025.05.20"

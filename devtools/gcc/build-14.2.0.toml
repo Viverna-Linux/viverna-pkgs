@@ -1,0 +1,6 @@
+depend = [
+    "library/gmp",
+    "library/mpfr",
+    "library/mpc",
+    "devtools/m4"
+]

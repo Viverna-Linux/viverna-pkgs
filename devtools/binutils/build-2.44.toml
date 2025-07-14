@@ -1,5 +1,8 @@
 [metadata]
 source-url = "https://sourceware.org/pub/binutils/releases/binutils-2.44.tar.xz"
-dependencies = [
+build-depend = [
+    "devtools/gcc"
+]
+depend = [
     "library/zlib"
 ]

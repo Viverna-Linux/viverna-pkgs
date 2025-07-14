@@ -1,0 +1,11 @@
+[metadata]
+source-url = "http://curl.se/ca/cacert-2025-05-20.pem"
+source-sha256 = "ab3ee3651977a4178a702b0b828a4ee7b2bbb9127235b0ab740e2e15974bf5db"
+
+[build]
+install = '''
+install -Dm644 cacert-2025-05-20.pem $INSTALL/etc/ssl/cert.pem
+install -d $INSTALL/etc/ssl/certs
+ln -s /etc/ssl/cert.pem $INSTALL/etc/ssl/certs/ca-certificates.crt
+ln -s /etc/ssl/cert.pem $INSTALL/etc/ssl/ca-bundle.crt
+'''

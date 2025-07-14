@@ -6,7 +6,7 @@ bootstrap-version = true
 configure = '''
 sudo -B rm -rf $ROOT/work/* || fail
 mv Python-3.13.5 $ROOT/work/ || fail
-sudo -B arch-chroot $ROOT bash -c "cd /work/Python-3.13.5 && ./configure --prefix=/usr --enable-shared --without-ensurepip" || fail
+sudo -B arch-chroot $ROOT bash -c "cd /work/Python-3.13.5 && ./configure --prefix=/usr --enable-shared" || fail
 '''
 build = '''
 sudo -B arch-chroot $ROOT bash -c "cd /work/Python-3.13.5 && make -j$(nproc)" || fail
